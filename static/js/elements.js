@@ -37,34 +37,14 @@ function getRow(row, is_top) {
 function addAtom(type, row_id) {
     let new_atoms = [];
 
-    if (atom_ids === 1) {
+    if (element_ids === 1) {
         document.getElementById('row-1').innerHTML = '';
     }
 
     if (type === 0) {
-        let new_catom = create
-
-        new_catom.id = atom_ids
-
-        atom_ids += 1
-
-        new_atoms.push(new_catom);
-
-        let new_hatom = hatom.cloneNode(true)
-
-        new_hatom.id = atom_ids
-
-        atom_ids += 1
-
-        new_atoms.push(new_hatom)
-
-        new_hatom = hatom.cloneNode(true)
-
-        new_hatom.id = atom_ids
-
-        atom_ids += 1
-
-        new_atoms.push(new_hatom)
+        new_atoms.push(createC());
+        new_atoms.push(createH());
+        new_atoms.push(createH());
     }
 
     for (var i = 0; i < new_atoms.length; i++) {
