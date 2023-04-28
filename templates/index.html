@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ content.page_title }}</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Custom scripts-->
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/events.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/elements.js') }}" defer></script>
+
+    <!-- None custom CSS files -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    <!-- None custom scripts -->
+    <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+    <script src="https://kit.fontawesome.com/697d2afc76.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@grabzit/js@3.5.2/grabzit.min.js"></script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <div class="language-selector">
+            <div class="language" id="english">
+                <img src="{{ url_for('static', filename='images/en.webp') }}">
+                <label>EN</label>
+            </div>
+            <div class="language" id="dutch">
+                <img src="{{ url_for('static', filename='images/be.png') }}">
+                <label>NL</label>
+            </div>
+        </div>
+
+        <div class="tooltip">
+            <i class="fas fa-trash-alt"></i>
+
+            <span class="tooltiptext">{{ content.reset }}</span>
+        </div>
+    </div>
+
+    <div class="element-options" id="element-options">
+        <span class="atom" onclick="changeTo(0)">C</span>
+        <span class="atom" onclick="changeTo(1)">X</span>
+        <span class="atom" onclick="changeTo(2)">OH</span>
+        <span class="atom" onclick="changeTo(3)">O</span>
+        <span class="atom" onclick="changeTo(4)">NH<sub>2</sub></span>
+    </div>
+
+    <div class="samples">
+        <div class="element" id="atom">
+            <span class="empty"></span>
+            <span class="empty"></span>
+            <div class="vertical"><span></span></div>
+            <span class="empty"></span>
+            <span class="empty"></span>
+            <span class="atom">H</span>
+            <div class="horizontal"><span></span></div>
+            <span class="atom">C</span>
+            <div class="horizontal"><span></span></div>
+            <span class="atom">H</span>
+            <span class="empty"></span>
+            <span class="empty"></span>
+            <div class="vertical"><span></span></div>
+            <span class="empty"></span>
+            <span class="empty"></span>
+        </div>
+    </div>
+
+    <div class="container" id="container">
+        <div id="row-1" data-top-row="row-2" data-bottom-row="row-3">
+            <div class="element" id="sample">
+                <i class="fas fa-plus"></i>
+    
+                <div class="element-options">
+                    <span class="atom" onclick="addAtom(0, 'row-1')">C</span>
+                    <span class="atom" onclick="openHalogenMenu()">X</span>
+                    <span class="atom" onclick="addAtom(0, 'row-1')">OH</span>
+                    <span class="atom" onclick="addAtom(0, 'row-1')">O</span>
+                    <span class="atom" onclick="addAtom(0, 'row-1')">NH<sub>2</sub></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
