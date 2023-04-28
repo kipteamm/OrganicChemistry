@@ -31,6 +31,8 @@
 </head>
 
 <body>
+    <div class="overlay" id="overlay"></div>
+
     <div class="toolbar">
         <div class="language-selector">
             <div class="language" id="english">
@@ -59,17 +61,37 @@
     </div>
 
     <div class="samples">
+        <div class="element" id="h-atom">
+            <span class="empty"></span>
+            <span class="empty"></span>
+
+            <label class="atom-label">
+                <span class="atom">H</span>
+
+                <div class="edit-options">
+                    <span class="atom" onclick="addAtom(0, 'row-1')">C</span>
+                    <span class="atom" onclick="openHalogenMenu()">X</span>
+                    <span class="atom" onclick="addAtom(0, 'row-1')">OH</span>
+                    <span class="atom" onclick="addAtom(0, 'row-1')">O</span>
+                    <span class="atom" onclick="addAtom(0, 'row-1')">NH<sub>2</sub></span>
+                </div>
+            </label>
+
+            <span class="empty"></span>
+            <span class="empty"></span>
+        </div>
+
         <div class="element" id="atom">
             <span class="empty"></span>
             <span class="empty"></span>
             <div class="vertical"><span></span></div>
             <span class="empty"></span>
             <span class="empty"></span>
-            <span class="atom"></span>
+            <span class="atom" onclick="openEditMenu(this.id)"></span>
             <div class="horizontal"><span></span></div>
-            <span class="atom"></span>
+            <span class="atom" onclick="openEditMenu(this.id)"></span>
             <div class="horizontal"><span></span></div>
-            <span class="atom"></span>
+            <span class="atom" onclick="openEditMenu(this.id)"></span>
             <span class="empty"></span>
             <span class="empty"></span>
             <div class="vertical"><span></span></div>

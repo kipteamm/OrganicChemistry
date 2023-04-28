@@ -10,8 +10,6 @@ function createC() {
     for (var i = 0; i < atoms.length; i++) {
         let atom = atoms[i]
 
-        console.log(atom, i % 2 === 0)
-
         atom.id = atom_ids;
 
         atom_ids += 1
@@ -29,30 +27,25 @@ function createC() {
 }
 
 function createH() {
-    let new_element = atom.cloneNode(true);
+    let new_element = hatom.cloneNode(true);
 
     new_element.id = element_ids
 
     element_ids += 1
 
-    let atoms = new_element.querySelectorAll('.atom')
+    let atom = new_element.querySelector('.atom');
 
-    for (var i = 0; i < atoms.length; i++) {
-        let atom = atoms[i]
+    atom.addEventListener('click', function() {
+        openEditMenu(this.id)
+    })
 
-        atom.id = atom_ids;
+    atom.id = atom_ids;
 
-        atom_ids += 1
+    let element_options = new_element.querySelector('.edit-options');
 
-        if (i % 2 !== 0) {
-            atom.innerText = 'H'            
+    element_options.id = "options-" + atom_ids
 
-            continue
-        }
-
-        atom.classList.remove('atom')
-        atom.classList.add('empty')
-    }
+    atom_ids += 1;
 
     return new_element
 }
