@@ -36,7 +36,7 @@ i {
     padding: calc(var(--item-pdd) / 2);
     border-radius: var(--item-rad);
     border: 2px solid var(--clr-acc);
-    display: inline-block;
+    display: inline-flex;
 }
 
 .toolbar i {
@@ -73,13 +73,15 @@ i {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .container i {
     font-size: 20px;
 }
-
 .container:hover {
     cursor: pointer;
+}
+
+.row {
+    display: flex;
 }
 
 i.fas.fa-plus:hover {
@@ -108,7 +110,8 @@ i.fas.fa-plus:hover + .element-options {
     transform: scale(1);
     cursor: auto;
 }
-span.atom {
+span.atom,
+span.edit-option {
     width: 36px;
     height: 36px;
     line-height: 36px;
@@ -120,7 +123,8 @@ span.atom {
     display: inline-block;
     position: relative;
 }
-span.atom:hover {
+span.atom:hover,
+span.edit-option:hover {
     cursor: pointer;
 }
 
@@ -156,6 +160,30 @@ span.atom:hover {
     display: flex;
     flex-wrap: wrap;
     width: 300px;
+}
+
+/* ATOMS */
+/*
+Carbon (C): Black or gray
+Hydrogen (H): White or light gray
+Oxygen (O): Red or dark red
+Nitrogen (N): Blue or dark blue
+Sulfur (S): Yellow or bright yellow
+Chlorine (Cl): Green or light green
+Bromine (Br): Orange or reddish-brown
+Iodine (I): Purple or violet
+*/
+.active-c-atom {
+    transition: .3s;
+    background-color: black;
+    border: 2px solid black !important;
+}
+
+.active-h-atom {
+    transition: .3s;
+    background-color: lightgray;
+    border: 2px solid lightgray !important;
+    color: black;
 }
 
 /* CONNECTIONS */

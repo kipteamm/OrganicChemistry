@@ -6,20 +6,30 @@ function createC() {
     element_ids += 1
 
     let atoms = new_element.querySelectorAll('.atom')
+    let element_options = new_element.querySelectorAll('.edit-options')
 
     for (var i = 0; i < atoms.length; i++) {
         let atom = atoms[i]
+        let element_option = element_options[i]
+
+        element_option.id = "options-" + atom_ids
 
         atom.id = atom_ids;
 
         atom_ids += 1
 
+        atom.addEventListener('click', function() {
+            openEditMenu(this.id)
+        })
+
         if (i % 2 !== 0) {
+            atom.classList.add("c-atom")
             atom.innerText = 'C'            
 
             continue
         }
 
+        atom.classList.add("h-atom")
         atom.innerText = 'H'
     }
 
@@ -34,6 +44,8 @@ function createH() {
     element_ids += 1
 
     let atom = new_element.querySelector('.atom');
+
+    atom.classList.add("h-atom")
 
     atom.addEventListener('click', function() {
         openEditMenu(this.id)

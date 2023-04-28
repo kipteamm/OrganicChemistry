@@ -5,6 +5,7 @@ function getRow(row, is_top) {
 
     new_row = document.createElement('div')
 
+    new_row.classList.add('row');
     new_row.id = row
     new_row.setAttribute("data-top-row", "row-" + row_ids)
 
@@ -34,8 +35,9 @@ function getRow(row, is_top) {
         arr[2] = BOTTOM ATOM
 */
 
-function addAtom(type, row_id) {
+function addAtom(type, elm) {
     let new_atoms = [];
+    let row_id = elm.closest('.row').id
 
     if (element_ids === 1) {
         document.getElementById('row-1').innerHTML = '';
@@ -46,6 +48,8 @@ function addAtom(type, row_id) {
         new_atoms.push(createH());
         new_atoms.push(createH());
     }
+
+    
 
     for (var i = 0; i < new_atoms.length; i++) {
         let row;

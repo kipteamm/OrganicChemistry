@@ -18,6 +18,7 @@
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/atoms.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/events.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/toolbar.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/elements.js') }}" defer></script>
 
     <!-- None custom CSS files -->
@@ -50,6 +51,9 @@
 
             <span class="tooltiptext">{{ content.reset }}</span>
         </div>
+
+        <span class="atom" onmouseover="showC()" onmouseout="hideC()">C</span>
+        <span class="atom" onmouseover="showH()" onmouseout="hideH()">H</span>
     </div>
 
     <div class="element-options" id="element-options">
@@ -69,11 +73,11 @@
                 <span class="atom">H</span>
 
                 <div class="edit-options">
-                    <span class="atom" onclick="addAtom(0, 'row-1')">C</span>
-                    <span class="atom" onclick="openHalogenMenu()">X</span>
-                    <span class="atom" onclick="addAtom(0, 'row-1')">OH</span>
-                    <span class="atom" onclick="addAtom(0, 'row-1')">O</span>
-                    <span class="atom" onclick="addAtom(0, 'row-1')">NH<sub>2</sub></span>
+                    <span class="edit-option" onclick="addAtom(0, this)">C</span>
+                    <span class="edit-option" onclick="openHalogenMenu()">X</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">OH</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">O</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">NH<sub>2</sub></span>
                 </div>
             </label>
 
@@ -87,11 +91,47 @@
             <div class="vertical"><span></span></div>
             <span class="empty"></span>
             <span class="empty"></span>
-            <span class="atom" onclick="openEditMenu(this.id)"></span>
+
+            <label class="atom-label">
+                <span class="atom"></span>
+
+                <div class="edit-options">
+                    <span class="edit-option" onclick="addAtom(0, this)">C</span>
+                    <span class="edit-option" onclick="openHalogenMenu()">X</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">OH</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">O</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">NH<sub>2</sub></span>
+                </div>
+            </label>
+
             <div class="horizontal"><span></span></div>
-            <span class="atom" onclick="openEditMenu(this.id)"></span>
+            
+            <label class="atom-label">
+                <span class="atom"></span>
+
+                <div class="edit-options">
+                    <span class="edit-option" onclick="addAtom(0, this)">C</span>
+                    <span class="edit-option" onclick="openHalogenMenu()">X</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">OH</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">O</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">NH<sub>2</sub></span>
+                </div>
+            </label>
+
             <div class="horizontal"><span></span></div>
-            <span class="atom" onclick="openEditMenu(this.id)"></span>
+            
+            <label class="atom-label">
+                <span class="atom"></span>
+
+                <div class="edit-options">
+                    <span class="edit-option" onclick="addAtom(0, this)">C</span>
+                    <span class="edit-option" onclick="openHalogenMenu()">X</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">OH</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">O</span>
+                    <span class="edit-option" onclick="addAtom(0, this)">NH<sub>2</sub></span>
+                </div>
+            </label>
+            
             <span class="empty"></span>
             <span class="empty"></span>
             <div class="vertical"><span></span></div>
@@ -101,16 +141,16 @@
     </div>
 
     <div class="container" id="container">
-        <div id="row-1" data-top-row="row-2" data-bottom-row="row-3">
+        <div class="row" id="row-1" data-top-row="row-2" data-bottom-row="row-3">
             <div class="element" id="sample">
                 <i class="fas fa-plus"></i>
     
                 <div class="element-options">
-                    <span class="atom" onclick="addAtom(0, 'row-1')">C</span>
+                    <span class="atom" onclick="addAtom(0, this)">C</span>
                     <span class="atom" onclick="openHalogenMenu()">X</span>
-                    <span class="atom" onclick="addAtom(0, 'row-1')">OH</span>
-                    <span class="atom" onclick="addAtom(0, 'row-1')">O</span>
-                    <span class="atom" onclick="addAtom(0, 'row-1')">NH<sub>2</sub></span>
+                    <span class="atom" onclick="addAtom(0, this)">OH</span>
+                    <span class="atom" onclick="addAtom(0, this)">O</span>
+                    <span class="atom" onclick="addAtom(0, this)">NH<sub>2</sub></span>
                 </div>
             </div>
         </div>
