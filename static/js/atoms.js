@@ -1,63 +1,78 @@
-function createC() {
-    let new_element = atom.cloneNode(true);
+function createC(left, right) {
+    const newElement = atom.cloneNode(true);
 
-    new_element.id = element_ids
+    newElement.id = elementIds++;
 
-    element_ids += 1
+    const atoms = newElement.querySelectorAll('.atom');
+    const elementOptions = newElement.querySelectorAll('.edit-options');
 
-    let atoms = new_element.querySelectorAll('.atom')
-    let element_options = new_element.querySelectorAll('.edit-options')
-
-    for (var i = 0; i < atoms.length; i++) {
-        let atom = atoms[i]
-        let element_option = element_options[i]
-
-        element_option.id = "options-" + atom_ids
-
-        atom.id = atom_ids;
-
-        atom_ids += 1
-
-        atom.addEventListener('click', function() {
-            openEditMenu(this.id)
-        })
+    atoms.forEach((atom, i) => {
+        const elementOption = elementOptions[i];
+        elementOption.id = `options-${atomIds}`;
+        atom.id = atomIds++;
+        atom.addEventListener('click', () => openEditMenu(atom.id));
 
         if (i % 2 !== 0) {
-            atom.classList.add("c-atom")
-            atom.innerText = 'C'            
-
-            continue
+            atom.classList.add('c-atom');
+            atom.innerText = 'C';
+            return;
         }
 
-        atom.classList.add("h-atom")
-        atom.innerText = 'H'
-    }
+        if ((i === 0 && left) || (i === 2 && right)) {
+            atom.classList.add('h-atom');
+            atom.innerText = 'H';
+            return;
+        }
 
-    return new_element
+        newElement.classList.add('attached-element');
+        const children = newElement.children;
+
+        if (!left) {
+            [0, 0, 3, 3, 6, 6].forEach((index) => {    
+                console.log(index, children[index])   
+
+                newElement.removeChild(children[index]);
+            });
+        } else {
+            [3, 3, 6, 6, 9, 9].forEach((index) => {
+                newElement.removeChild(children[index]);
+            });
+        }
+    });
+
+    return newElement;
 }
 
-function createH() {
+function createH(left, right) {
     let new_element = hatom.cloneNode(true);
 
-    new_element.id = element_ids
+    new_element.id = elementIds
 
-    element_ids += 1
+    elementIds += 1
 
     let atom = new_element.querySelector('.atom');
 
     atom.classList.add("h-atom")
 
-    atom.addEventListener('click', function() {
+    atom.addEventListener('click', function () {
         openEditMenu(this.id)
     })
 
-    atom.id = atom_ids;
+    atom.id = atomIds;
 
     let element_options = new_element.querySelector('.edit-options');
 
-    element_options.id = "options-" + atom_ids
+    element_options.id = "options-" + atomIds
 
-    atom_ids += 1;
+    atomIds += 1;
+
+    if (!left) {
+        new_element.removeChild(new_element.children[0])
+        new_element.removeChild(new_element.children[0])
+    } else if (!right) {
+        new_element.removeChild(new_element.children[3])
+        new_element.removeChild(new_element.children[3])
+    }
 
     return new_element
 }

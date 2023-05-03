@@ -7,9 +7,9 @@ const atom = document.getElementById('atom');
 const hatom = document.getElementById('h-atom');
 
 // IDs
-let element_ids = 1;
-let atom_ids = 1;
-let row_ids = 4;
+let elementIds = 1;
+let atomIds = 1;
+let rowIds = 4;
 
 function closeAllEditMenus() {
     document.querySelectorAll('.edit-options').forEach(element => {
