@@ -101,17 +101,21 @@ i.fas.fa-plus:hover + .element-options {
 
 .element-options {
     position: absolute;
+    z-index: 1;
+    margin: -75px;
+    border-radius: var(--item-rad);
     background-color: var(--clr);
     height: 200px;
     width: 150px;
-    top: 50%;
-    margin: -75px;
     transform: scale(0);
-    transition: .1s all linear;
+    transition: transform .1s;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+}
+.element-options.edit-options {
+    margin: 0px;
 }
 .element-options:hover,
 .edit-options:hover {

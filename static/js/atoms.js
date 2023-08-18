@@ -1,78 +1,28 @@
-function createC(left, right) {
-    const newElement = atom.cloneNode(true);
+function createAtom(atom, index, elementID) {
+    const span = document.createElement('span')
 
-    newElement.id = elementIds++;
+    span.setAttribute('data-index', index)
+    span.classList.add(`element-${elementID}`)
 
-    const atoms = newElement.querySelectorAll('.atom');
-    const elementOptions = newElement.querySelectorAll('.edit-options');
+    if (atom.includes('-atom')) {
+        span.id = `atom-${atomIDs}`
+        span.innerText = atom.split('-atom')[0]
 
-    atoms.forEach((atom, i) => {
-        const elementOption = elementOptions[i];
-        elementOption.id = `options-${atomIds}`;
-        atom.id = atomIds++;
-        atom.addEventListener('click', () => openEditMenu(atom.id));
+        span.setAttribute('onclick', `openEditMenu('atom-${atomIDs}')`)
 
-        if (i % 2 !== 0) {
-            atom.classList.add('c-atom');
-            atom.innerText = 'C';
-            return;
-        }
+        atomIDs ++
 
-        if ((i === 0 && left) || (i === 2 && right)) {
-            atom.classList.add('h-atom');
-            atom.innerText = 'H';
-            return;
-        }
+        span.classList.add('atom')
+        span.classList.add(atom)
 
-        newElement.classList.add('attached-element');
-        const children = newElement.children;
+        return span
+    } 
 
-        if (!left) {
-            [0, 0, 3, 3, 6, 6].forEach((index) => {    
-                console.log(index, children[index])   
+    if (atom.includes('-connection')) {
+        span.innerHTML = '<span></span>'
 
-                newElement.removeChild(children[index]);
-            });
-        } else {
-            [3, 3, 6, 6, 9, 9].forEach((index) => {
-                newElement.removeChild(children[index]);
-            });
-        }
-    });
+        span.classList.add(atom.split('-connection')[0])
 
-    return newElement;
-}
-
-function createH(left, right) {
-    let new_element = hatom.cloneNode(true);
-
-    new_element.id = elementIds
-
-    elementIds += 1
-
-    let atom = new_element.querySelector('.atom');
-
-    atom.classList.add("h-atom")
-
-    atom.addEventListener('click', function () {
-        openEditMenu(this.id)
-    })
-
-    atom.id = atomIds;
-
-    let element_options = new_element.querySelector('.edit-options');
-
-    element_options.id = "options-" + atomIds
-
-    atomIds += 1;
-
-    if (!left) {
-        new_element.removeChild(new_element.children[0])
-        new_element.removeChild(new_element.children[0])
-    } else if (!right) {
-        new_element.removeChild(new_element.children[3])
-        new_element.removeChild(new_element.children[3])
+        return span
     }
-
-    return new_element
 }
